@@ -81,6 +81,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     <br> [Vuetify](https://vuetifyjs.com/en/) is a UI library for Vue.js.
     <br>LICENSE: MIT
 - **Vuex store**
-    <br> [Vuetify](https://vuex.vuejs.org/) is a state management pattern and library for Vue.js.
+    <br> [Vuex store](https://vuex.vuejs.org/) is a state management pattern and library for Vue.js.
     <br>LICENSE: MIT
 
