@@ -38,15 +38,15 @@ This will install the following libraries:
 Retrieve the Firebase configuration from the corresponding Firebase project (Web App settings):
 ```
 {
-    "apiKey": "apikey",
-    "authDomain": "xxx.firebaseapp.com",
-    "databaseURL": "https://xxx.firebaseio.com",
-    "projectId": "xxx",
-    "storageBucket": "xxx.appspot.com",
-    "messagingSenderId": "123456789",
-    "appId": "xxx",
-    "measurementId": "xxx"
-  }
+  "apiKey": "my-api-key",
+  "authDomain": "my-auth-domain",
+  "databaseURL": "my-database-url",
+  "projectId": "my-project-id",
+  "storageBucket": "my-storage-bucket",
+  "messagingSenderId": "my-messaging-sender-id",
+  "appId": "my-app-id",
+  "measurementId": "my-measurement-id"
+}
 ```
 and store it as JSON file: 'firebaseConfig.json'
 
