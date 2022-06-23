@@ -21,7 +21,7 @@ npm install
 
 ### Install requirements
 
-Run the script to install all required libaries:
+This project is based on Vue 2. Run the script to install all required libraries (Vue 2 compatible versions):
 
 ```
 . run-install-libraries.sh
@@ -31,7 +31,7 @@ This will install the following libraries:
 - npm install vuefire firebase: https://vuefire.vuejs.org/vuefire/
 - npm install vue-router@3: https://router.vuejs.org/
 - npm install vuetify --save: https://vuetifyjs.com/en/
-- npm install vuex@next --save: https://vuex.vuejs.org/
+- npm install vuex@3 --save: https://vuex.vuejs.org/
 
 ### Firebase connection
 
