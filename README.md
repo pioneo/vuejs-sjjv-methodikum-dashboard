@@ -21,7 +21,7 @@ npm install
 
 ### Install requirements
 
-Run the script to install all required libaries:
+Run the script to install all required libraries:
 
 ```
 . run-install-libraries.sh
