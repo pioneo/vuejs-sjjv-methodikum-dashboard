@@ -26,3 +26,7 @@ export var steps = [
     (v) => !!v || 'Feld ist erforderlich', // 'Field is required'
     (v) => ((v && v.length >= 10 && v.length <= 1000)) || 'Anzahl der Zeichen zwischen 10 und 1000', // 'Number of characters between 10 and 1000'
 ]
+
+export var collectioName = [
+    (v) => (!!v && v.length >= 1) || 'Feld ist erforderlich', // 'Field is required'
+]

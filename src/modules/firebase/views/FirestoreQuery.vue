@@ -1,11 +1,12 @@
 <template>
-  <v-container fluid grid-list-lg pa-5>
+  <v-container fluid grid-list-lg>
     <!-- Table -->
-    <v-container fluid grid-list-lg class="title">
+    <v-container fluid grid-list-lg>
       <v-card>
         <v-card-title class="title">
           Exercises
           <v-spacer></v-spacer>
+
           <v-text-field
             v-model="search"
             append-icon="fas fa-search"
@@ -30,7 +31,8 @@
 </template>
 
 <script>
-import { db } from "../assets/db";
+// TODO: move db to store
+import { db } from "../assets/firebase";
 export default {
   name: "FirestoreQuery",
   data() {

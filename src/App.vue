@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-app>
+    <v-app>  
       <router-view />
     </v-app>
   </div>
@@ -9,12 +9,11 @@
 <script>
 export default {
   name: "App",
-  data() {
-    return {};
+  setup() {
+    onBeforeMount(() => {
+      this.$store.dispatch("fetchUser");
+    });
   },
-  mounted() {
-    this.$router.replace({ name: "FirestoreWelcome" });
-  }
 };
 </script>
 
