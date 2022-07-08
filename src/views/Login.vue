@@ -41,35 +41,50 @@
 </template>
 
 <script>
-// TODO: document functions
-// Add Login not anomymous
+// TOOO: Add Login not anomymous
 export default {
   name: "Login",
   data() {
     return {
       input: {
         email: "",
-        password: ""
-      }
+        password: "",
+      },
     };
   },
   methods: {
+     /**
+     * Login via Firebase SDK.
+     *    
+     */
     login() {
       if (this.$refs.form_login.validate()) {
-        console.log("Currently not available");
-        //this.$store.dispatch("login");
+        this.$modal.show({
+          type: "warning",
+          text: "Login aktuell nicht verfügbar.",
+        });
       }
     },
+    /**
+     * Anonymous login via Firebase SDK.
+     *    
+     */
     loginAnonymous() {
       this.$store.dispatch("loginAnonymous");
     },
+     /**
+     * Registration via Firebase SDK.
+     *    
+     */
     register() {
       if (this.$refs.form_login.validate()) {
-        console.log("Currently not available");
-        //this.$store.dispatch("register");
+        this.$modal.show({
+          type: "warning",
+          text: "Registrierung aktuell nicht verfügbar.",
+        });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -12,11 +12,18 @@
     <!-- Form -->
     <v-container fluid grid-list-lg>
       <v-card>
-        <v-card-title class="title">Firestore Formular: 'exercises'</v-card-title>
+        <v-card-title class="title"
+          >Firestore Formular: '{{ collection.name }}'</v-card-title
+        >
 
         <v-form ref="form_document" v-model="documentData.valid">
           <v-container fluid grid-list-lg pa-10>
-            <v-text-field v-model="documentData.title" label="Titel" :rules="rulesTitle" required></v-text-field>
+            <v-text-field
+              v-model="documentData.title"
+              label="Titel"
+              :rules="rulesTitle"
+              required
+            ></v-text-field>
             <v-text-field
               v-model="documentData.description"
               label="Kurzbeschreibung"
@@ -141,7 +148,7 @@ export default {
     return {
       // Firebase collection
       collection: {
-        name: []
+        name: [],
       },
       // document data
       documentData: {
@@ -151,9 +158,9 @@ export default {
         duration: 0,
         tagsTechnik: [],
         tagsMethodik: [],
-        steps: ""
+        steps: "",
       },
-      switchJSON: false
+      switchJSON: false,
     };
   },
   computed: {
@@ -223,7 +230,7 @@ export default {
         "Technikvoraussetzungstraining",
         "Technikerwerbstraining",
         "Technikanwendungstraining",
-        "Technikergänzungstraining"
+        "Technikergänzungstraining",
       ];
     },
     /**
@@ -246,17 +253,17 @@ export default {
         { name: "Halbkreisfußtritt", group: "Atemi" },
         { name: "Fußstoß vorwärts", group: "Atemi" },
         { name: "Faustrückenschlag", group: "Atemi" },
-        { name: "Schulterstopp", group: "Atemi" }
+        { name: "Schulterstopp", group: "Atemi" },
       ];
     },
     /**
      * Items of the select collection from all Firebase collections.
-     * #TODO: retrieve from Firestore
+     * #TODO: retrieve collection names from Firestore
      *
      * @returns {Array}
      */
     itemsFirebaseCollections() {
-      return ["exercisesTest"];
+      return ["exercisesTest", "tags"];
     },
     /**
      * Concatenates Arrays of the selected tags.
@@ -283,10 +290,13 @@ export default {
         description: this.documentData.description,
         tags: this.tags,
         duration: parseInt(this.documentData.duration),
-        steps: this.parseSteps()
+        steps: this.parseSteps(),
       };
       return JSON.stringify(data, null, 2);
-    }
+    },
+  },
+  mounted() {
+    this.collection.name = this.itemsFirebaseCollections[0];
   },
   methods: {
     /**
@@ -306,16 +316,23 @@ export default {
     async writeFirestore() {
       if (this.$refs.form_document.validate()) {
         try {
-          this.$store.dispatch("write", {
+          await this.$store.dispatch("write", {
             data: JSON.parse(this.firebaseData),
-            collectionName: this.collection.name
+            collectionName: this.collection.name,
+          });
+          this.$modal.show({
+            type: "success",
+            text: "Erfolg! Element hinzugefügt.",
           });
         } catch (error) {
-          console.log(error);
+          this.$modal.show({
+            type: "error",
+            text: "Fehler! Element nicht hinzugefügt.",
+          });
         }
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
