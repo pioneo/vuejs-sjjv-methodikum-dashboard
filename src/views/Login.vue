@@ -53,9 +53,9 @@ export default {
     };
   },
   methods: {
-     /**
+    /**
      * Login via Firebase SDK.
-     *    
+     *
      */
     login() {
       if (this.$refs.form_login.validate()) {
@@ -67,14 +67,21 @@ export default {
     },
     /**
      * Anonymous login via Firebase SDK.
-     *    
+     *
      */
-    loginAnonymous() {
-      this.$store.dispatch("loginAnonymous");
+    async loginAnonymous() {
+      try {
+        await this.$store.dispatch("loginAnonymous");
+      } catch (error) {
+        this.$modal.show({
+          type: "error",
+          text: "Fehler! Login nicht möglich.",
+        });
+      }
     },
-     /**
+    /**
      * Registration via Firebase SDK.
-     *    
+     *
      */
     register() {
       if (this.$refs.form_login.validate()) {

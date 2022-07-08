@@ -12,7 +12,6 @@ import { db } from './assets/firebase';
 import { auth } from './assets/firebase';
 
 // TODO: document functions
-// TODO: display messages, remove console logging 
 export const FirebaseStore = {
     state: {
         user: null
@@ -35,9 +34,9 @@ export const FirebaseStore = {
             try {
                 await signInAnonymously(auth)
             } catch (error) {
-                const errorCode = error.code;
+                //const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorMessage)
+                throw errorMessage
             }
             commit('SET_USER', auth.currentUser)
             router.push('/')
@@ -52,12 +51,10 @@ export const FirebaseStore = {
         async logout({ commit }) {
             try {
                 await signOut(auth)
-
-
             } catch (error) {
-                const errorCode = error.code;
+                //const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorMessage)
+                throw errorMessage
             }
             commit('CLEAR_USER')
             router.push('/login')
@@ -79,17 +76,16 @@ export const FirebaseStore = {
             })
         },
 
-        // add commit(..)
+        // TODO: add commit(..)
         async write({ commit }, payload) {
             try {
-                const res = await db
+                await db
                     .collection(payload.collectionName)
                     .add(payload.data);
-                console.log("document added!", res);
             } catch (error) {
-                const errorCode = error.code;
+                //const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorMessage)
+                throw errorMessage
             }
 
         },
