@@ -30,3 +30,7 @@ export var steps = [
 export var collectioName = [
     (v) => (!!v && v.length >= 1) || 'Feld ist erforderlich', // 'Field is required'
 ]
+
+export var degree = [
+    (v) => (!!v && v.length >= 1) || 'Feld ist erforderlich', // 'Field is required'
+]

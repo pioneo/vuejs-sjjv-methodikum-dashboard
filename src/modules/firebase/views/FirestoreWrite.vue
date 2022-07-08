@@ -61,7 +61,7 @@
                   multiple
                   clearable
                   deletable-chips
-                  hint="Techniken basierend auf 'Ju-Jutsu 1x1'"
+                  hint="Techniken basierend auf dem 'Ju-Jutsu 1x1'"
                   persistent-hint
                   item-text="name"
                   item-value="name"
@@ -83,6 +83,22 @@
                   :rules="rulesDuration"
                   required
                 ></v-text-field>
+              </v-col>
+
+              <v-col cols="12" sm="3">
+                <v-subheader v-text="'Graduierung'"></v-subheader>
+              </v-col>
+              <v-col cols="12" sm="9">
+                <v-select
+                  v-model="documentData.degree"
+                  :items="itemsDegree"
+                  :menu-props="{ maxHeight: '400' }"
+                  label="6. Kyu - 5. Dan"
+                  hint="Erforderliche Graduierung (Schwierigkeitsgrad)"
+                  persistent-hint
+                  :rules="rulesDegree"
+                  required
+                ></v-select>
               </v-col>
             </v-row>
           </v-container>
@@ -159,6 +175,7 @@ export default {
         tagsTechnik: [],
         tagsMethodik: [],
         steps: "",
+        degree: "",
       },
       switchJSON: false,
     };
@@ -221,6 +238,14 @@ export default {
       return rules.collectioName;
     },
     /**
+     * Custom validation by rules: degree select component with single choice.
+     *
+     * @returns {Array}
+     */
+    rulesDegree() {
+      return rules.degree;
+    },
+    /**
      * Items of the select component.
      *
      * @returns {Array}
@@ -280,6 +305,26 @@ export default {
       }
     },
     /**
+     * Concatenates Arrays of the selected Ju-Jutsu degrees.
+     *
+     * @returns {Array}
+     */
+    itemsDegree() {
+      return [
+        "6. Kyu (weiß)",
+        "5. Kyu (gelb)",
+        "4. Kyu (orange)",
+        "3. Kyu (grün)",
+        "2. Kyu (blau)",
+        "1. Kyu (braun)",
+        "1. Dan (schwarz)",
+        "2. Dan (schwarz)",
+        "3. Dan (schwarz)",
+        "4. Dan (schwarz)",
+        "5. Dan (schwarz)",
+      ];
+    },
+    /**
      * Create JSON data from user selected items and text fields.
      *
      * @returns {string} JSON
@@ -291,6 +336,8 @@ export default {
         tags: this.tags,
         duration: parseInt(this.documentData.duration),
         steps: this.parseSteps(),
+        degree: this.documentData.degree,
+        dateUTC: new Date(),
       };
       return JSON.stringify(data, null, 2);
     },
