@@ -41,7 +41,21 @@ export default {
       ]
     };
   },
-  methods: {}
+  mounted() {
+    this.getCollections();
+  },
+  methods: {
+    async getCollections() {
+    try {
+        await this.$store.dispatch("getCollections");
+      } catch (error) {
+        this.$modal.show({
+          type: "error",
+          text: "Fehler! Firebase Firestore nicht errreichbar.",
+        });
+      }
+      }
+  }
 };
 </script>
 

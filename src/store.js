@@ -8,5 +8,3 @@ export const store = new Vuex.Store({
     FirebaseStore,
   }
 });
-
-console.log(store)

@@ -14,11 +14,15 @@ import { auth } from './assets/firebase';
 // TODO: document functions
 export const FirebaseStore = {
     state: {
-        user: null
+        user: null,
+        firebaseCollections: null
     },
     getters: {
         user: state => {
             return state.user
+        },
+        firebaseCollections: state => {
+            return state.firebaseCollections
         }
     },
     mutations: {
@@ -27,6 +31,9 @@ export const FirebaseStore = {
         },
         CLEAR_USER(state) {
             state.user = null
+        },
+        SET_FIREBASE_COLLECTIONS(state, firebaseCollections) {
+            state.firebaseCollections = firebaseCollections
         }
     },
     actions: {
@@ -87,7 +94,33 @@ export const FirebaseStore = {
                 const errorMessage = error.message;
                 throw errorMessage
             }
-
         },
+
+        /**
+         * 
+         * Retrieve all relevant collections from Firestore.
+         * Commits collections object with collection name as keys and documents list as values.
+         * 
+         */
+        async getCollections({ commit }) {
+            try {
+                const collections = { "uebungen": [], "techniken": [] }
+                for (const [index, element] of Object.keys(collections).entries()) {
+                    const { docs } = await db.collection(element).get()
+                    const entries = docs.map(doc => {
+                        const { id } = doc
+                        const data = doc.data()
+                        return { id, ...data }
+                    })
+                    collections[element] = entries
+                }
+                commit('SET_FIREBASE_COLLECTIONS', collections)
+            } catch (error) {
+                //const errorCode = error.code;
+                const errorMessage = error.message;
+                //console.log(errorMessage)
+                throw errorMessage
+            }
+        }
     }
 }
