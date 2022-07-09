@@ -16,7 +16,6 @@
         <v-card-title class="title"
           >Firestore Formular: '{{ collection.name }}'</v-card-title
         >
-
         <!-- Form exercises -->
         <div v-if="collection.name == 'uebungen'">
           <v-form ref="form_document" v-model="documentDataExercises.valid">
@@ -190,7 +189,7 @@ export default {
     return {
       // Firebase collection
       collection: {
-        name: [],
+        name: "",
       },
       // document data for exercise documents
       documentDataExercises: {
