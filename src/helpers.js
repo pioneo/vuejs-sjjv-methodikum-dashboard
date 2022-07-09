@@ -1,5 +1,9 @@
 /**
- * Compate two pbjects based on name property.
+ * @author Kerstin Neininger <kerstin.neininger@gmail.com>
+ */
+
+/**
+ * Compare two objects based on name property.
  * Needed to sort dictionary by values.
  *
  * @param {object} obj1 - The first object to compare against.

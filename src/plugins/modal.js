@@ -1,3 +1,7 @@
+/**
+ * @author Kerstin Neininger <kerstin.neininger@gmail.com>
+ */
+
 import VueModal from '../views/Modal.vue'
 
 const Modal = {

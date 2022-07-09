@@ -1,3 +1,7 @@
+/**
+ * @author Kerstin Neininger <kerstin.neininger@gmail.com>
+ */
+
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'

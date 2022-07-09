@@ -1,3 +1,7 @@
+/**
+ * @author Kerstin Neininger <kerstin.neininger@gmail.com>
+ */
+
 import router from '../../router'
 import {
     //getAuth,
@@ -11,10 +15,11 @@ import {
 import { db } from './assets/firebase';
 import { auth } from './assets/firebase';
 
-// TODO: document functions
 export const FirebaseStore = {
     state: {
+        // Firestore user
         user: null,
+        // Firestore collections and documents contained therein
         firebaseCollections: null
     },
     getters: {
@@ -37,6 +42,11 @@ export const FirebaseStore = {
         }
     },
     actions: {
+        /**
+         * User Login.
+         * Note that this function should be used for anonymous users.
+         * Usage of Firebase SDK.
+         */
         async loginAnonymous({ commit }) {
             try {
                 await signInAnonymously(auth)
@@ -49,12 +59,21 @@ export const FirebaseStore = {
             router.push('/')
         },
 
+        /**
+         * User clearance and redirection to Login page.
+         * Note that this function should be used for anonymous users.
+         * Firebase SDK not used here as signout of an anonymous user using the SDK will again create a new (anonymous) user at Login.
+         */
         async logoutAnonymous({ commit }) {
-            //await signOut(auth) //signout anonymous will create new user at Login..
             commit('CLEAR_USER')
             router.push('/login')
         },
 
+        /**
+         * User logout and redirection to Login page.
+         * Note that this function should be used for non-anonymous users.
+         * Usage of Firebase SDK.
+         */
         async logout({ commit }) {
             try {
                 await signOut(auth)
@@ -67,6 +86,11 @@ export const FirebaseStore = {
             router.push('/login')
         },
 
+        /**
+         * Retrieve user state and change vue route accordingly
+         * Usage of Firebase SDK.
+         * 
+         */
         fetchUser({ commit }) {
             auth.onAuthStateChanged(async user => {
                 if (user) {
@@ -83,7 +107,16 @@ export const FirebaseStore = {
             })
         },
 
-        // TODO: add commit(..)
+        /**
+         * Write data to a Firestore collection.
+         * Usage of Firebase SDK.
+         * TODO: add commit(..)
+         * 
+         * @param {Object} payload - The data to be stored as document in a specific collection defined by collectionName.
+         * @param {string} payload.collectionName - The name of the collection.
+         * @param {Object} payload.data - The JSON data to be stored.
+         * 
+         */
         async write({ commit }, payload) {
             try {
                 await db
@@ -97,9 +130,10 @@ export const FirebaseStore = {
         },
 
         /**
-         * 
          * Retrieve all relevant collections from Firestore.
          * Commits collections object with collection name as keys and documents list as values.
+         * Usage of Firebase SDK.
+         * TODO: might call this function with collection names as arguments
          * 
          */
         async getCollections({ commit }) {

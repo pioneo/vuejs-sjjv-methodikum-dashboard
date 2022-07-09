@@ -1,3 +1,7 @@
+/**
+ * @author Kerstin Neininger <kerstin.neininger@gmail.com>
+ */
+
 export var title = [
     (v) => !!v || 'Feld ist erforderlich', // 'Field is required'
     (v) => ((v && v.length >= 5 && v.length <= 50)) || 'Anzahl der Zeichen zwischen 5 und 50', // 'Number of characters between 5 and 50'

@@ -1,3 +1,7 @@
+/**
+ * @author Kerstin Neininger <kerstin.neininger@gmail.com>
+ */
+
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import firebaseConfig from './firebaseConfig.json'
