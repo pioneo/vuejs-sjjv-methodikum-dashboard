@@ -433,6 +433,7 @@ export default {
             type: "success",
             text: "Erfolg! Element hinzugefügt.",
           });
+          await this.$store.dispatch("getCollections"); // Reload new entries
         } catch (error) {
           this.$modal.show({
             type: "error",
