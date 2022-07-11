@@ -1,9 +1,7 @@
 <template>
-  <v-container fluid fill-height>
-    <p>
-      USER ID:
-      {{userId}}
-    </p>
+  <v-container fluid grid-list-lg>
+    <p>Firebase Nutzer-UID:</p>
+    <p>'{{ userId }}'</p>
   </v-container>
 </template>
 
@@ -22,9 +20,9 @@ export default {
       if (this.user) {
         return this.user.uid;
       }
-    }
+    },
   },
-  methods: {}
+  methods: {},
 };
 </script>
 

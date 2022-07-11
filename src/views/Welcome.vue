@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid fill-height>
+  <v-container fluid grid-list-lg>
     <p>
       Saarländischer Ju-Jutsu Verband e.V.
       <a href="https://sjjv.de/" target="_blank">(SJJV)</a> Methodikum
@@ -13,7 +13,7 @@ export default {
   data() {
     return {};
   },
-  methods: {}
+  methods: {},
 };
 </script>
 
