@@ -11,11 +11,13 @@ import Login from "./views/Login";
 import Home from "./views/Home";
 import User from "./views/User";
 import Welcome from "./views/Welcome";
+import PageNotFound from "./views/PageNotFound";
 
 import Firebase from "./modules/firebase/views/Firebase";
 import FirestoreWelcome from "./modules/firebase/views/FirestoreWelcome"
 import FirestoreQuery from "./modules/firebase/views/FirestoreQuery"
 import FirestoreWrite from "./modules/firebase/views/FirestoreWrite"
+
 import { store } from "./store.js"
 
 
@@ -73,7 +75,8 @@ const routes = [
         ]
       }
     ]
-  }
+  },
+  { path: "*", component: PageNotFound }
 ]
 
 const router = new VueRouter({

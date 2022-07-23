@@ -76,7 +76,7 @@ export default {
     };
   },
   computed: {},
-  mounted() {
+  created() {
     // load tab content
     const path = "/welcome";
     if (this.$route.path !== path) this.$router.push(path);

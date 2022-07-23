@@ -48,7 +48,7 @@ export default {
       ],
     };
   },
-  mounted() {
+  created() {
     // load tab content
     const path = "/firebase/welcome";
     if (this.$route.path !== path) this.$router.push(path);

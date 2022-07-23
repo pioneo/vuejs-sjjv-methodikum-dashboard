@@ -403,7 +403,7 @@ export default {
       return JSON.stringify(data, null, 2);
     },
   },
-  mounted() {
+  created() {
     this.collection.name = this.itemsFirebaseCollectionsNames[0];
   },
   methods: {
