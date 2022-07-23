@@ -41,17 +41,16 @@
 
     <!-- Details selected row -->
     <v-container fluid grid-list-lg pa-5>
-      <span style="white-space: pre-wrap;">{{ selectedItemDetails }}</span>
+      <span style="white-space: pre-wrap">{{ selectedItemDetails }}</span>
     </v-container>
 
     <!-- Download -->
     <v-container fluid grid-list-lg pa-5>
       <v-btn block color="primary" @click="downloadFirestore">
-            Download Collection
-            <v-icon right dark>fas fa-download</v-icon>
-          </v-btn>
-          </v-container>
-
+        Download Collection
+        <v-icon right dark>fas fa-download</v-icon>
+      </v-btn>
+    </v-container>
   </v-container>
 </template>
 
@@ -133,7 +132,7 @@ export default {
     selectedItemDetails() {
       if (this.selectedItem) {
         if (Object.keys(this.selectedItem).includes("steps")) {
-          return `Steps:\n${this.selectedItem.steps.join('\n')}`;
+          return `Steps:\n${this.selectedItem.steps.join("\n")}`;
         } else {
           return "Keine Details verfügbar.";
         }
@@ -156,7 +155,7 @@ export default {
         JSON.stringify(this.documents),
         "export_collection_" + this.collection.name + ".json"
       );
-    }
+    },
   },
 };
 </script>
