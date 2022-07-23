@@ -398,7 +398,7 @@ export default {
       }
 
       // always add the UTC time
-      data["dateUTC"] = new Date();
+      data["dateCreatedUTC"] = new Date();
 
       return JSON.stringify(data, null, 2);
     },
