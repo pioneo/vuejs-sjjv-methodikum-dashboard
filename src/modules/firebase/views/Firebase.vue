@@ -20,7 +20,6 @@
 </template>
 
 <script>
-// TODO: document functions
 export default {
   name: "Firebase",
   data() {
@@ -57,6 +56,10 @@ export default {
     this.getCollections();
   },
   methods: {
+    /**
+     * Query Firebase Firestore Collections.
+     *
+     */
     async getCollections() {
       try {
         await this.$store.dispatch("getCollections");

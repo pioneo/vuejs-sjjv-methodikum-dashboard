@@ -43,11 +43,21 @@
     <v-container fluid grid-list-lg pa-5>
       <span style="white-space: pre-wrap;">{{ selectedItemDetails }}</span>
     </v-container>
+
+    <!-- Download -->
+    <v-container fluid grid-list-lg pa-5>
+      <v-btn block color="primary" @click="downloadFirestore">
+            Download Collection
+            <v-icon right dark>fas fa-download</v-icon>
+          </v-btn>
+          </v-container>
+
   </v-container>
 </template>
 
 <script>
 import * as rules from "../assets/rules";
+import * as helpers from "../../../helpers";
 export default {
   name: "FirestoreQuery",
   data() {
@@ -136,7 +146,18 @@ export default {
     this.collection.name = this.itemsFirebaseCollectionsNames[0];
   },
   mounted() {},
-  methods: {},
+  methods: {
+    /**
+     * Download selected Firebase Firestore Collection as JSON.
+     *
+     */
+    downloadFirestore() {
+      helpers.saveTextAsFile(
+        JSON.stringify(this.documents),
+        "export_collection_" + this.collection.name + ".json"
+      );
+    }
+  },
 };
 </script>
 
