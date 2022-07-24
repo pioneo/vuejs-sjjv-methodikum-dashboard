@@ -19,8 +19,11 @@ export const FirebaseStore = {
     state: {
         // Firestore user
         user: null,
+
         // Firestore collections and documents contained therein
-        firebaseCollections: null,
+        firebase: {
+            collections: null,
+        },
 
         // items Methodik etc.
         items: {
@@ -34,7 +37,7 @@ export const FirebaseStore = {
             return state.user
         },
         firebaseCollections: state => {
-            return state.firebaseCollections
+            return state.firebase.collections
         },
         itemsMethodik: state => {
             return state.items.methodik
@@ -54,7 +57,7 @@ export const FirebaseStore = {
             state.user = null
         },
         SET_FIREBASE_COLLECTIONS(state, firebaseCollections) {
-            state.firebaseCollections = firebaseCollections
+            state.firebase.collections = firebaseCollections
         },
         SET_ITEMS_METHODIK(state, itemsMethodik) {
             state.items.methodik = itemsMethodik
