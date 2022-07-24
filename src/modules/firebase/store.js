@@ -20,7 +20,14 @@ export const FirebaseStore = {
         // Firestore user
         user: null,
         // Firestore collections and documents contained therein
-        firebaseCollections: null
+        firebaseCollections: null,
+
+        // items Methodik etc.
+        items: {
+            methodik: [],
+            degree: [],
+            techniqueGroup: []
+        }
     },
     getters: {
         user: state => {
@@ -28,6 +35,15 @@ export const FirebaseStore = {
         },
         firebaseCollections: state => {
             return state.firebaseCollections
+        },
+        itemsMethodik: state => {
+            return state.items.methodik
+        },
+        itemsDegree: state => {
+            return state.items.degree
+        },
+        itemsTechniqueGroup: state => {
+            return state.items.techniqueGroup
         }
     },
     mutations: {
@@ -39,9 +55,49 @@ export const FirebaseStore = {
         },
         SET_FIREBASE_COLLECTIONS(state, firebaseCollections) {
             state.firebaseCollections = firebaseCollections
+        },
+        SET_ITEMS_METHODIK(state, itemsMethodik) {
+            state.items.methodik = itemsMethodik
+        },
+        SET_ITEMS_DEGREE(state, itemsDegree) {
+            state.items.degree = itemsDegree
+        },
+        SET_ITEMS_TECHNIQUEGROUP(state, itemsTechniqueGroup) {
+            state.items.techniqueGroup = itemsTechniqueGroup
         }
     },
     actions: {
+        /**
+        * Set items for Methodik, degrees, etc.
+        * TODO: retrieve from a firebase collection.
+        */
+        async setItems({ commit }) {
+            const itemsMethodik = [
+                "Technikvoraussetzungstraining",
+                "Technikerwerbstraining",
+                "Technikanwendungstraining",
+                "Technikergänzungstraining",
+            ];
+            commit('SET_ITEMS_METHODIK', itemsMethodik)
+
+            const itemsDegree = [
+                "6. Kyu (weiß)",
+                "5. Kyu (gelb)",
+                "4. Kyu (orange)",
+                "3. Kyu (grün)",
+                "2. Kyu (blau)",
+                "1. Kyu (braun)",
+                "1. Dan (schwarz)",
+                "2. Dan (schwarz)",
+                "3. Dan (schwarz)",
+                "4. Dan (schwarz)",
+                "5. Dan (schwarz)",
+            ];
+            commit('SET_ITEMS_DEGREE', itemsDegree)
+
+            const itemsTechniqueGroup = ["Atemitechniken", "Wurftechniken", "Hebeltechniken"];
+            commit('SET_ITEMS_TECHNIQUEGROUP', itemsTechniqueGroup)
+        },
         /**
          * User Login.
          * Note that this function should be used for anonymous users.
@@ -112,9 +168,9 @@ export const FirebaseStore = {
          * Usage of Firebase SDK.
          * TODO: add commit(..)
          * 
-         * @param {Object} payload - The data to be stored as document in a specific collection defined by collectionName.
+         * @param {object} payload - The data to be stored as document in a specific collection defined by collectionName.
          * @param {string} payload.collectionName - The name of the collection.
-         * @param {Object} payload.data - The JSON data to be stored.
+         * @param {object} payload.data - The JSON data to be stored.
          * 
          */
         async write({ commit }, payload) {

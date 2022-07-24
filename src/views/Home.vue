@@ -28,7 +28,7 @@
           <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
       </v-list-item>
-      <p class="version">&copy; {{ this.year }} -- Version v1.0.0</p>
+      <p class="version">&copy; {{ year }} -- Version {{ appversion }}</p>
       <v-divider></v-divider>
       <v-list dense nav>
         <v-list-item
@@ -79,11 +79,17 @@ export default {
     year() {
       return new Date().getFullYear();
     },
+    appversion() {
+      return this.$appversion;
+    }
   },
   created() {
     // load tab content
     const path = "/welcome";
     if (this.$route.path !== path) this.$router.push(path);
+
+    // set variables: items
+    this.$store.dispatch("setItems");
   },
   methods: {
     logout() {

@@ -282,12 +282,7 @@ export default {
      * @returns {array}
      */
     itemsTagsMethodik() {
-      return [
-        "Technikvoraussetzungstraining",
-        "Technikerwerbstraining",
-        "Technikanwendungstraining",
-        "Technikergänzungstraining",
-      ];
+      return this.$store.getters.itemsMethodik;
     },
     /**
      * Items of the select tag component.
@@ -352,19 +347,7 @@ export default {
      * @returns {array}
      */
     itemsDegree() {
-      return [
-        "6. Kyu (weiß)",
-        "5. Kyu (gelb)",
-        "4. Kyu (orange)",
-        "3. Kyu (grün)",
-        "2. Kyu (blau)",
-        "1. Kyu (braun)",
-        "1. Dan (schwarz)",
-        "2. Dan (schwarz)",
-        "3. Dan (schwarz)",
-        "4. Dan (schwarz)",
-        "5. Dan (schwarz)",
-      ];
+      return this.$store.getters.itemsDegree;
     },
     /**
      * Concatenates Arrays of the selected Ju-Jutsu technique group.
@@ -372,7 +355,7 @@ export default {
      * @returns {array}
      */
     itemsTechniqueGroup() {
-      return ["Atemitechniken", "Wurftechniken", "Hebeltechniken"];
+      return this.$store.getters.itemsTechniqueGroup;
     },
     /**
      * Create JSON data from user selected items and text fields.
@@ -399,7 +382,6 @@ export default {
 
       // always add the UTC time
       data["dateCreatedUTC"] = new Date();
-
       return JSON.stringify(data, null, 2);
     },
   },
