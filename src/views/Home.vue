@@ -61,7 +61,6 @@
 </template>
 
 <script>
-// TODO: document functions
 export default {
   name: "Home",
   data() {

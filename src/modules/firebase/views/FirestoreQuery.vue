@@ -74,7 +74,7 @@ export default {
     /**
      * Retrieved Firestore collections and documents.
      *
-     * @returns {Object} - Dictionary with collection name as keys and documents list as values
+     * @returns {object} - Dictionary with collection name as keys and documents list as values
      */
     firebaseCollections() {
       return this.$store.getters.firebaseCollections;
@@ -82,7 +82,7 @@ export default {
     /**
      * Items of the select Firestore collection names.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     itemsFirebaseCollectionsNames() {
       return Object.keys(this.firebaseCollections);
@@ -90,14 +90,14 @@ export default {
     /**
      * Custom validation by rules: collection name select component with single choice.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     rulesCollectionName() {
       return rules.collectioName;
     },
     /**
      * Firestrore collection retrieval and extraction of table headers.
-     * @returns {Array}
+     * @returns {array}
      */
     headers() {
       const headers = [];
@@ -113,21 +113,21 @@ export default {
     },
     /**
      * Firestore documents of a specific collections.
-     * @returns {Object}
+     * @returns {object}
      */
     documents() {
       return this.firebaseCollections[this.collection.name];
     },
     /**
      * Content of the selected row.
-     * @returns {Object}
+     * @returns {object}
      */
     selectedItem() {
       return this.selected[0];
     },
     /**
      * Content of the selected row as String represetation.
-     * @returns {String}
+     * @returns {string}
      */
     selectedItemDetails() {
       if (this.selectedItem) {
@@ -152,7 +152,7 @@ export default {
      */
     downloadFirestore() {
       helpers.saveTextAsFile(
-        JSON.stringify(this.documents),
+        this.documents,
         "export_collection_" + this.collection.name + ".json"
       );
     },

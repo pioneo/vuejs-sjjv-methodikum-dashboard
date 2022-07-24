@@ -25,7 +25,7 @@ export default {
   methods: {
    /**
      * Show a quick message with timeout that is based on JS modal and a snackbar component.
-     * @param {Object} params - The dialog that should be displayed.
+     * @param {object} params - The dialog that should be displayed.
      * @param {string} params.text - The message of the dialog.
      * @param {string} params.type - The color of the dialog. Can be either success, error or warning as defined in ./plugins/vuetify.js.
      */

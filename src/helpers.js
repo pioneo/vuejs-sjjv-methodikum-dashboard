@@ -27,17 +27,17 @@ export function compare(obj1, obj2) {
  * @param {string} filename - File name of the file to be saved. Date and time are added as prefix.
  */
 export function saveTextAsFile(content, filename) {
-    var textFileAsBlob = new Blob([content], { type: "text/plain" });
-    var downloadLink = document.createElement("a");
-    downloadLink.download = new Date().toISOString() + "_" + filename;
+    var data = JSON.stringify(content);
+    var blob = new Blob([data], { type: "text/plain" });
+    var link = document.createElement("a");
+    link.download = new Date().toISOString() + "_" + filename;
+
     if (window.webkitURL != null) {
-        // Chrome allows the link to be clicked without actually adding it to the DOM.
-        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+        link.href = window.webkitURL.createObjectURL(blob);
     } else {
-        // Firefox requires the link to be added to the DOM before it can be clicked.
-        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-        downloadLink.style.display = "none";
-        document.body.appendChild(downloadLink);
+        link.href = window.URL.createObjectURL(blob);
+        link.style.display = "none";
+        document.body.appendChild(link);
     }
-    downloadLink.click();
+    link.click();
 }

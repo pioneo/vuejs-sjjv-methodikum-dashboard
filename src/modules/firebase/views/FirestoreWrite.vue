@@ -215,7 +215,7 @@ export default {
     /**
      * Custom validation by rules: exercise duration field component.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     rulesDuration() {
       return rules.duration;
@@ -223,7 +223,7 @@ export default {
     /**
      * Custom validation by rules: exercise short description field component.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     rulesDescription() {
       return rules.description;
@@ -231,7 +231,7 @@ export default {
     /**
      * Custom validation by rules: exercise title field component.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     rulesTitle() {
       return rules.title;
@@ -239,7 +239,7 @@ export default {
     /**
      * Custom validation by rules: exercise tags select component with mutiple choices.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     rulesTagsMultiple() {
       return rules.tagsMultiple;
@@ -247,7 +247,7 @@ export default {
     /**
      * Custom validation by rules: exercise tags select component with single choice.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     rulesTagsSingle() {
       return rules.tagsSingle;
@@ -255,7 +255,7 @@ export default {
     /**
      * Custom validation by rules: exercise steps textarea component.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     rulesSteps() {
       return rules.steps;
@@ -263,7 +263,7 @@ export default {
     /**
      * Custom validation by rules: collection name select component with single choice.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     rulesCollectionName() {
       return rules.collectioName;
@@ -271,7 +271,7 @@ export default {
     /**
      * Custom validation by rules: degree select component with single choice.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     rulesDegree() {
       return rules.degree;
@@ -279,7 +279,7 @@ export default {
     /**
      * Items of the select component.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     itemsTagsMethodik() {
       return [
@@ -293,7 +293,7 @@ export default {
      * Items of the select tag component.
      * Retrieve from Firestore collections and format for select component
      *
-     * @returns {Array}
+     * @returns {array}
      */
     itemsTagsTechnik() {
       const collection = this.firebaseCollections["techniken"];
@@ -319,7 +319,7 @@ export default {
     /**
      * Retrieved Firestore collections and documents.
      *
-     * @returns {Object} - Dictionary with collection name as keys and documents list as values
+     * @returns {object} - Dictionary with collection name as keys and documents list as values
      */
     firebaseCollections() {
       return this.$store.getters.firebaseCollections;
@@ -327,7 +327,7 @@ export default {
     /**
      * Items of the select Firestore collection names.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     itemsFirebaseCollectionsNames() {
       return Object.keys(this.firebaseCollections);
@@ -335,7 +335,7 @@ export default {
     /**
      * Concatenates Arrays of the selected tags.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     tags() {
       if (this.documentDataExercises) {
@@ -349,7 +349,7 @@ export default {
     /**
      * Concatenates Arrays of the selected Ju-Jutsu degrees.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     itemsDegree() {
       return [
@@ -369,7 +369,7 @@ export default {
     /**
      * Concatenates Arrays of the selected Ju-Jutsu technique group.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     itemsTechniqueGroup() {
       return ["Atemitechniken", "Wurftechniken", "Hebeltechniken"];
@@ -377,7 +377,7 @@ export default {
     /**
      * Create JSON data from user selected items and text fields.
      *
-     * @returns {string} JSON
+     * @returns {string} - JSON data
      */
     firebaseData() {
       var data = {};
@@ -410,7 +410,7 @@ export default {
     /**
      * Split steps string by linebreak and generate array with single steps.
      *
-     * @returns {Array}
+     * @returns {array}
      */
     parseSteps() {
       return this.documentDataExercises.steps.split("\n");
