@@ -5,8 +5,8 @@
     <v-tabs v-model="tab" flat left>
       <!--<v-tabs-slider color="primary"></v-tabs-slider>-->
       <v-tab
-        v-for="item in items"
-        :key="item.index"
+        v-for="(item, index) in items"
+        :key="index"
         :to="`${item.route}`"
         exact
       >
@@ -27,19 +27,16 @@ export default {
       tab: "/firebase/welcome",
       items: [
         {
-          index: 0,
           name: "Welcome",
           route: "/firebase/welcome",
           icon: "fas fa-fire",
         },
         {
-          index: 1,
           name: "Query",
           route: "/firebase/query",
           icon: "fas fa-database",
         },
         {
-          index: 2,
           name: "Write",
           route: "/firebase/write",
           icon: "fas fa-save",

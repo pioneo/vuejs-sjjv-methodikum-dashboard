@@ -22,6 +22,15 @@
             hide-details
           ></v-text-field>
           <v-spacer></v-spacer>
+
+          <!-- Download -->
+          <v-layout row wrap justify-end>
+            <v-flex shrink>
+              <v-icon small color="primary" @click="downloadFirestore">
+                fas fa-download
+              </v-icon>
+            </v-flex>
+          </v-layout>
         </v-card-title>
 
         <v-data-table
@@ -40,17 +49,17 @@
     </v-container>
 
     <!-- Details selected row -->
-    <v-container fluid grid-list-lg pa-5>
-      <span style="white-space: pre-wrap">{{ selectedItemDetails }}</span>
-    </v-container>
-
-    <!-- Download -->
-    <v-container fluid grid-list-lg pa-5>
-      <v-btn block color="primary" @click="downloadFirestore">
-        Download Collection
-        <v-icon right dark>fas fa-download</v-icon>
-      </v-btn>
-    </v-container>
+    <div v-if="selectedItem">
+      <v-container fluid grid-list-lg pa-5>
+        <p>Details:</p>
+        <ol>
+          <li v-for="(item, index) in selectedItemDetails" :key="index">
+            {{ item }}
+          </li>
+        </ol>
+      </v-container>
+    </div>
+    <div v-else><p>Keine Zeile ausgewählt.</p></div>
   </v-container>
 </template>
 
@@ -126,18 +135,16 @@ export default {
       return this.selected[0];
     },
     /**
-     * Content of the selected row as String represetation.
-     * @returns {string}
+     * Details of the selected row
+     * @returns {array}
      */
     selectedItemDetails() {
       if (this.selectedItem) {
         if (Object.keys(this.selectedItem).includes("steps")) {
-          return `Steps:\n${this.selectedItem.steps.join("\n")}`;
+          return this.selectedItem.steps;
         } else {
-          return "Keine Details verfügbar.";
+          return ["Keine Details verfügbar."];
         }
-      } else {
-        return "Keine Zeile ausgewählt.";
       }
     },
   },
@@ -145,9 +152,17 @@ export default {
     this.collection.name = this.itemsFirebaseCollectionsNames[0];
   },
   mounted() {},
+  watch: {
+    collection: {
+      handler: function (newVal, oldVal) {
+        this.selected = [];
+      },
+      deep: true,
+    },
+  },
   methods: {
     /**
-     * Download selected Firebase Firestore Collection as JSON.
+     * Download selected Firebase Firestore Collection as JSON file.
      *
      */
     downloadFirestore() {
