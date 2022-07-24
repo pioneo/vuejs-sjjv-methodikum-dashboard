@@ -145,6 +145,8 @@ export default {
         } else {
           return ["Keine Details verfügbar."];
         }
+      } else {
+        return [];
       }
     },
   },

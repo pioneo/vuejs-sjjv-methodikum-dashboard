@@ -33,6 +33,8 @@ export default {
     userId() {
       if (this.user) {
         return this.user.uid;
+      } else {
+        return "NA"
       }
     },
     /**
@@ -43,6 +45,8 @@ export default {
     userIsAnonymous() {
       if (this.user) {
         return this.user.isAnonymous;
+      } else {
+        return false;
       }
     },
   },
