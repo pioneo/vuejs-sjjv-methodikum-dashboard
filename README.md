@@ -21,7 +21,7 @@ npm install
 
 ### Install requirements
 
-Run the script to install all required libraries:
+This project is based on Vue 2. Run the script to install all required libraries (Vue 2 compatible versions):
 
 ```
 . run-install-libraries.sh
@@ -31,22 +31,22 @@ This will install the following libraries:
 - npm install vuefire firebase: https://vuefire.vuejs.org/vuefire/
 - npm install vue-router@3: https://router.vuejs.org/
 - npm install vuetify --save: https://vuetifyjs.com/en/
-- npm install vuex@next --save: https://vuex.vuejs.org/
+- npm install vuex@3 --save: https://vuex.vuejs.org/
 
 ### Firebase connection
 
 Retrieve the Firebase configuration from the corresponding Firebase project (Web App settings):
 ```
 {
-    "apiKey": "apikey",
-    "authDomain": "xxx.firebaseapp.com",
-    "databaseURL": "https://xxx.firebaseio.com",
-    "projectId": "xxx",
-    "storageBucket": "xxx.appspot.com",
-    "messagingSenderId": "123456789",
-    "appId": "xxx",
-    "measurementId": "xxx"
-  }
+  "apiKey": "my-api-key",
+  "authDomain": "my-auth-domain",
+  "databaseURL": "my-database-url",
+  "projectId": "my-project-id",
+  "storageBucket": "my-storage-bucket",
+  "messagingSenderId": "my-messaging-sender-id",
+  "appId": "my-app-id",
+  "measurementId": "my-measurement-id"
+}
 ```
 and store it as JSON file: 'firebaseConfig.json'
 

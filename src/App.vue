@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <v-app>
-      <router-view />
+      <router-view /> <!-- vue router -->
+      <vue-modal /> <!-- dialog modal-->
     </v-app>
   </div>
 </template>
@@ -9,12 +10,13 @@
 <script>
 export default {
   name: "App",
-  data() {
-    return {};
+  /*
+  setup() {
+    onBeforeMount(() => {
+      this.$store.dispatch("fetchUser");
+    });
   },
-  mounted() {
-    this.$router.replace({ name: "FirestoreWelcome" });
-  }
+  */
 };
 </script>
 
